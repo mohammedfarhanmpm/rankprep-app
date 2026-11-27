@@ -47,6 +47,7 @@ yarn-error.*
 # Build outputs and local secrets
 *.apk
 *.aab
-.env
-.env.*
+# local overrides / secrets (the committed .env holds only public client values)
+.env.local
+.env.*.local
 .claude/settings.local.json
