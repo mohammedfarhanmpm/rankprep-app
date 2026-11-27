@@ -39,3 +39,14 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Generated native projects (Continuous Native Generation: `npx expo prebuild`)
+/android
+/ios
+
+# Build outputs and local secrets
+*.apk
+*.aab
+.env
+.env.*
+.claude/settings.local.json
