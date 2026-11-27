@@ -1,5 +1,5 @@
 import { Redirect } from 'expo-router';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, Platform, View } from 'react-native';
 import { useApp } from '../lib/app-state';
 import { useColors } from '../lib/theme';
 
@@ -13,6 +13,7 @@ export default function Gate() {
         <ActivityIndicator color={c.rose} />
       </View>
     );
-  if (session || guest || !cloudEnabled) return <Redirect href={onboarded ? '/home' : '/onboarding'} />;
+  const guestOk = guest && Platform.OS !== 'web';
+  if (session || guestOk || !cloudEnabled) return <Redirect href={onboarded ? '/home' : '/onboarding'} />;
   return <Redirect href="/login" />;
 }

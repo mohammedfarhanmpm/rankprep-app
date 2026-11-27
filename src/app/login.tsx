@@ -52,6 +52,7 @@ export default function Login() {
             {msg && <Text style={{ color: msg.ok ? c.ok : c.bad }}>{msg.text}</Text>}
             <Btn title={busy ? 'Please wait…' : mode === 'in' ? 'Sign in' : 'Create account'} onPress={submit} disabled={busy} />
           </Card>
+          {Platform.OS !== 'web' && (
           <Btn
             ghost
             title="Continue without account"
@@ -60,7 +61,8 @@ export default function Login() {
               router.replace('/');
             }}
           />
-          <Muted style={{ textAlign: 'center' }}>Without an account, progress stays on this phone and PIP is not available.</Muted>
+          )}
+          <Muted style={{ textAlign: 'center' }}>{Platform.OS === 'web' ? 'Create a free account to start studying. Your progress is saved to your account.' : 'Without an account, progress stays on this phone and PIP is not available.'}</Muted>
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
